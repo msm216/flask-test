@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }}'s Watchlist</title>
+</head>
+<body>
+    {# Jinja2注释 #}
+    <a href="{{ url_for('index') }}">&larr; Return</a>
+    <h2>{{ user.username }}</h2>
+    {% if user.bio %}
+        <i>{{ user.bio }}</i>
+    {% else %}
+        <i>This user has not provided bio.</i>
+    {% endif %}
+    <h5>{{ user.username }}'s top {{ movies|length }} movies:</h5>
+    <ul>
+        {% for movie in movies %}
+            <li>{{ movie.name }} - {{ movie.year }}</li>
+        {% endfor %}
+    </ul>
+    {# 在模板中定义变量 #}
+    {% set navigation %}
+        <li><a href="/">Home</a>
+        <li><a href="/about">About</a>
+    {% endset %}
+</body>
+</html>

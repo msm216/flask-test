@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Flasky
+{% endblock %}
+
+
+{% block page_content %}
+
+<div class="page-header">
+    <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
+    {% if auth %}
+        <p>AUTHENTICATED</p>
+    {% else %}
+        <p>NOT AUTHENTICATED</p>
+    {% endif %}
+    <p>Your log status is {{ status }}.</p>
+</div>
+
+<div class="small-stuff">
+    <h4>Here are some harmless comments:</h4>
+    <ul>
+        {% for client, comment in comments.items() %}
+            <li>{{ client }}: {{ comment }}</li>
+        {% endfor %}
+    </ul>
+    <h4>Here are some time reports:</h4>
+    <ul>
+        <li>The local date and time is {{ moment(current_time).format('LLL') }}.</li>
+        <li>That was {{ moment(current_time).fromNow(refresh=True) }}</li>
+        <li>Current date and time: {{ moment().format('MMMM Do YYYY, h:mm:ss a') }}.</li>
+    </ul>
+    <p>Your browser is {{ user_agent }}.</p>
+</div>
+
+{{ wtf.quick_form(form) }}
+
+{% endblock %}
