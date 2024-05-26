@@ -1,0 +1,22 @@
+.table-container {
+    width: 100%;
+    max-width: 600px; /* Optional: Max width of the table */
+    height: 300px; /* Fixed height to make the container scrollable */
+    overflow: auto; /* Enable scrolling */
+    border: 1px solid #ccc; /* Optional: Border around the container */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
